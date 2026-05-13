@@ -1,0 +1,6 @@
+{
+  "appId": "com.njung.deliver",
+  "appName": "DELIVER",
+  "webDir": "dist",
+  "server": { "androidScheme": "https" }
+}
