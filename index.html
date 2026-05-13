@@ -15,7 +15,7 @@
 <section id="auth" class="screen active center">
   <div class="wrap" style="max-width:470px">
     <div class="card">
-      <img src="assets/deliver-logo.png" alt="DELIVER. Enterprise Simulation logo" class="brand-logo" />
+      <img src="./assets/deliver-logo.png" alt="DELIVER logo" class="brand-logo">
       <p class="sub" style="text-align:center">Enterprise Career Simulation</p>
       <h1 class="title" style="text-align:center">DELIVER<span>.</span></h1>
       <p class="sub" style="text-align:center">Rise · Transfer · Lead · Survive</p>
@@ -30,7 +30,7 @@
         <button class="btn primary" style="width:100%" onclick="Auth.login()">Enter Simulation</button>
       </div>
       <div id="registerForm" style="display:none">
-        <label>Full name</label><input id="regName" class="input" placeholder="Njung Valentine Zuh" />
+        <label>Full name</label><input id="regName" class="input" placeholder="Enter Your Name" />
         <br><br><label>Username</label><input id="regUser" class="input" />
         <br><br><label>Password</label><input id="regPass" class="input" type="password" />
         <p id="regErr" class="err"></p>
@@ -79,7 +79,97 @@
 </section>
 
 <div id="aboutModal" class="modal"><div class="card"><div class="between"><h2>About DELIVER.</h2><button class="btn ghost small" onclick="UI.closeModal('aboutModal')">Close</button></div><p class="soft">DELIVER. is a rules-first enterprise project leadership simulation. The corrected build separates simulation logic from narrative text, removes direct frontend AI API calls, unlocks systems gradually, and keeps scoring deterministic.</p><p class="soft">Optional AI can be connected through a backend endpoint only. The AI should write narrative and coaching. The simulation engine should control consequences, score, failure, promotion, and memory.</p></div></div>
-<div id="howModal" class="modal"><div class="card"><div class="between"><h2>How to Play</h2><button class="btn ghost small" onclick="UI.closeModal('howModal')">Close</button></div><ol class="soft"><li>Read the situation and political context.</li><li>Check unlocked tools: Inbox, People, RAID, EVM, Critical Path, Career, Wellness, Brand, Framework.</li><li>Choose one of four actions or write your own move.</li><li>The rules engine scores your decision. The world remembers.</li></ol><p class="danger">Failure condition: delivery health and stakeholder confidence remain below 35 for two consecutive turns.</p></div></div>
+<div id="howModal" class="modal">
+  <div class="card">
+
+    <div class="between">
+      <h2>How To Play DELIVER.</h2>
+      <button class="btn ghost small" onclick="UI.closeModal('howModal')">Close</button>
+    </div>
+
+    <p class="soft">
+      DELIVER. is an enterprise leadership simulation where every decision affects
+      stakeholder trust, delivery performance, reputation, finances, burnout,
+      and long-term career growth.
+    </p>
+
+    <br>
+
+    <p class="section">Gameplay Flow</p>
+
+    <div class="email">
+      <b>1. Read The Situation</b>
+      <p class="soft">
+        Analyze the business crisis, political tension, operational pressure,
+        and project constraints presented in the scenario.
+      </p>
+    </div>
+
+    <div class="email">
+      <b>2. Review Organizational Signals</b>
+      <p class="soft">
+        Check emails, stakeholders, RAID logs, EVM indicators,
+        critical path threats, morale, and delivery health.
+      </p>
+    </div>
+
+    <div class="email">
+      <b>3. Make Strategic Decisions</b>
+      <p class="soft">
+        Choose from predefined actions or write your own executive response.
+        Every decision creates consequences across multiple systems.
+      </p>
+    </div>
+
+    <div class="email">
+      <b>4. Manage Consequences</b>
+      <p class="soft">
+        Your choices influence trust, politics, delivery performance,
+        burnout, reputation, governance, and future opportunities.
+      </p>
+    </div>
+
+    <div class="email">
+      <b>5. Progress Your Career</b>
+      <p class="soft">
+        Rise from Associate Project Coordinator to Chief Delivery Officer
+        while managing increasingly complex organizations and political environments.
+      </p>
+    </div>
+
+    <br>
+
+    <p class="section">Important Systems</p>
+
+    <ul class="soft" style="line-height:1.8">
+      <li><b>Stakeholders:</b> People remember your decisions and political behavior.</li>
+      <li><b>RAID:</b> Risks, assumptions, issues, and dependencies must be controlled.</li>
+      <li><b>EVM:</b> SPI and CPI track delivery and financial health.</li>
+      <li><b>Burnout:</b> Stress affects leadership quality and team morale.</li>
+      <li><b>Reputation:</b> Strong delivery increases executive trust and career growth.</li>
+    </ul>
+
+    <br>
+
+    <p class="section">Failure Condition</p>
+
+    <div class="log">
+      If Delivery Health and Stakeholder Confidence remain below 35%
+      for two consecutive turns, the project collapses and the career fails.
+    </div>
+
+    <br>
+
+    <p class="section">Objective</p>
+
+    <p class="soft">
+      The objective is not simply to complete projects.
+      The real challenge is surviving organizational systems,
+      political pressure, executive expectations, and strategic uncertainty.
+    </p>
+
+  </div>
+</div>
 <div id="profileModal" class="modal"><div class="card"><div class="between"><h2>Player Profile</h2><button class="btn ghost small" onclick="UI.closeModal('profileModal')">Close</button></div><div id="profileContent"></div></div></div>
 <div id="endModal" class="modal"><div class="card"><h2 id="endTitle"></h2><p id="endBody" class="soft"></p><button class="btn primary" onclick="UI.closeModal('endModal');UI.screen('menu')">Back to Menu</button></div></div>
 
@@ -142,7 +232,61 @@ const SCENES={
  airlines:['crew scheduling transformation','post-merger systems integration','customer disruption command centre','maintenance planning platform'],
  manufacturing:['lean plant transformation','supplier resilience programme','global MES rollout','quality escape reduction initiative']
 };
-const UI={screen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active'); if(id==='game')document.getElementById(id).style.display='flex'},openModal(id){document.getElementById(id).classList.add('open')},closeModal(id){document.getElementById(id).classList.remove('open')},toast(t){const el=document.getElementById('toast');el.textContent=t;el.style.display='block';clearTimeout(this.t);this.t=setTimeout(()=>el.style.display='none',1800)}};
+const UI = {
+
+  screen(id){
+
+    document.querySelectorAll('.screen').forEach(screen => {
+
+      screen.classList.remove('active');
+
+      screen.style.display = '';
+
+    });
+
+    const target = document.getElementById(id);
+
+    target.classList.add('active');
+
+    if(id === 'game'){
+
+      target.style.display = 'flex';
+
+    }
+
+  },
+
+  openModal(id){
+
+    document.getElementById(id).classList.add('open');
+
+  },
+
+  closeModal(id){
+
+    document.getElementById(id).classList.remove('open');
+
+  },
+
+  toast(message){
+
+    const el = document.getElementById('toast');
+
+    el.textContent = message;
+
+    el.style.display = 'block';
+
+    clearTimeout(this.toastTimer);
+
+    this.toastTimer = setTimeout(() => {
+
+      el.style.display = 'none';
+
+    }, 1800);
+
+  }
+
+};
 const Auth={toggle(m){document.getElementById('loginForm').style.display=m==='login'?'block':'none';document.getElementById('registerForm').style.display=m==='register'?'block':'none';document.getElementById('loginTab').className='btn '+(m==='login'?'primary':'ghost');document.getElementById('registerTab').className='btn '+(m==='register'?'primary':'ghost')},register(){const name=regName.value.trim(),u=regUser.value.trim().toLowerCase(),p=regPass.value;if(!name||!u||p.length<4){regErr.textContent='Enter name, username, and password of at least 4 characters.';return}if(DB.users[u]){regErr.textContent='Username already exists.';return}DB.users[u]={name,pass:p,created:new Date().toISOString(),game:null,history:[],achievements:{}};DB.current=u;Store.save(DB);Menu.render();UI.screen('menu')},login(){const u=loginUser.value.trim().toLowerCase(),p=loginPass.value;if(!DB.users[u]||DB.users[u].pass!==p){loginErr.textContent='Invalid username or password.';return}DB.current=u;Store.save(DB);Menu.render();UI.screen('menu')},logout(){DB.current=null;Store.save(DB);STATE=null;UI.screen('auth')}};
 const Menu={render(){const user=DB.users[DB.current];welcome.textContent='Welcome, '+user.name;const has=!!user.game;resumeBtn.disabled=!has;resumePanel.style.display=has?'block':'none';if(has){resumePanel.innerHTML=`<p class="section">Saved Career</p><b>${user.game.levelTitle}</b><p class="muted">${user.game.company} · Turn ${user.game.turn} · XP ${user.game.xp}/100</p>`}}};
 const Setup={render(){industryGrid.innerHTML=INDUSTRIES.map(i=>`<button class="select-card" data-ind="${i.id}" onclick="Setup.ind('${i.id}')"><div style="font-size:24px">${i.icon}</div><b>${i.name}</b><p class="muted">${i.desc}</p><span class="pill">Entry Level ${i.start}</span></button>`).join('');methodGrid.innerHTML=METHODS.map(m=>`<button class="select-card" data-method="${m.id}" onclick="Setup.method('${m.id}')"><div style="font-size:24px">${m.icon}</div><b>${m.name}</b><p class="muted">${m.desc}</p><small class="danger">Risk: ${m.risk}</small></button>`).join('')},ind(id){SELECT.industry=INDUSTRIES.find(x=>x.id===id);document.querySelectorAll('[data-ind]').forEach(e=>e.classList.toggle('active',e.dataset.ind===id));this.ready()},method(id){SELECT.method=METHODS.find(x=>x.id===id);document.querySelectorAll('[data-method]').forEach(e=>e.classList.toggle('active',e.dataset.method===id));this.ready()},ready(){beginBtn.disabled=!(SELECT.industry&&SELECT.method)}};
